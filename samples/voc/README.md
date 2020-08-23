@@ -34,4 +34,14 @@ Here's some result on Instance Segmentation
 
 ### 3. Evaluation
 
-In progress, later release.
+Run the ``evaluate.py`` to get the precision and recall:
+
+```
+python3 evaluate.py --weight_path="path/to/weight_file" --confidence=confidence --data_dir="path/to/dataset"
+```
+
+``confidence`` here is the confidence score, only accept prediction higher than ``confidence``.
+
+Run ``result.py`` to get mAP.
+
+0.78, only evaluate on car,dog,cat,person,horse class.
