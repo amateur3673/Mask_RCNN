@@ -2,11 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from voc_model import objects
 class_ids=[6,7,11,12,14]
-n_indexes=(95-10)//5+1
+n_indexes=(100-0)//5+1
 precision_all=np.zeros((20,n_indexes))
 recall_all=np.zeros((20,n_indexes))
 idx=0
-for score in range(95,5,-5):
+for score in range(100,-5,-5):
     with open('eval/eval_{}.txt'.format(score),'r') as f:
         for i in range(20):
             data=f.readline().split(' ')
@@ -26,6 +26,8 @@ for i in range(len(class_ids)):
     result[i]['recall'].insert(0,0.0)
     for j in range(len(result[i]['precision'])):
         result[i]['precision'][j]=max(result[i]['precision'][j:])
+    result[i]['precision'].insert(len(result[i]['precision']),0.0)
+    result[i]['recall'].insert(len(result[i]['recall']),1.0)
 
 color=['b','g','r','c','m','y','k','w']
 for i in range(len(class_ids)):
@@ -34,6 +36,7 @@ plt.legend(loc='upper right')
 plt.xlabel('Recall')
 plt.ylabel('Precision')
 plt.title('Refine AP Curve')
+plt.savefig('APcurve.png')
 plt.show()
 
 def calc_ap(result_id):

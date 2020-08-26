@@ -32,6 +32,8 @@ Here's some result on Instance Segmentation
 
 ![](Images/image7.png)
 
+![](Images/image8.png)
+
 ### 3. Evaluation
 
 Run the ``evaluate.py`` to get the precision and recall:
@@ -44,4 +46,8 @@ python3 evaluate.py --weight_path="path/to/weight_file" --confidence=confidence 
 
 Run ``result.py`` to get mAP.
 
-0.78, only evaluate on car,dog,cat,person,horse class.
+0.82, only evaluate on car,dog,cat,person,horse class.
+
+AP curve:
+
+![](Images/APcurve.png)
